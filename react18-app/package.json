@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "serve": "vite build && http-server dist -p 3001 --cors"
   },
   "dependencies": {
+    "@micro-zoe/micro-app": "^1.0.0-rc.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -21,6 +23,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "http-server": "^14.1.1",
     "vite": "^5.0.8"
   }
 }

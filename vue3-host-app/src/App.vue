@@ -1,17 +1,17 @@
+<!--
+ * @Author      : ZhouQiJun
+ * @Date        : 2024-01-11 16:51:33
+ * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2024-01-11 17:01:36
+ * @Description : 
+-->
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
   <HelloWorld msg="Vite + Vue" />
+  <micro-app name="react18-app" url="http://localhost:3001/" iframe></micro-app>
 </template>
 
 <style scoped>

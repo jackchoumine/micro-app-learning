@@ -6,13 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "serve": "vite build && http-server dist -p 4001 -o"
   },
   "dependencies": {
+    "@micro-zoe/micro-app": "^1.0.0-rc.3",
     "vue": "^3.3.11"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
+    "http-server": "^14.1.1",
     "vite": "^5.0.8"
   }
 }
