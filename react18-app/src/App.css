@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+.react18-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  /* min-height: 100vh; */
+  background-color: aquamarine;
+}
