@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:51:33
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-12 10:50:40
+ * @LastEditTime: 2024-01-12 11:16:21
  * @Description : 
 -->
 <script setup>
@@ -19,7 +19,10 @@ function increment() {
   count.value++
   microApp.setData('react18-app',{
     count: count.value
+  },(dataFromChild)=>{
+    console.log('来自子应用react18-app的数据:', dataFromChild)
   })
+  console.log('向子应用react18-app传递数据:', count.value)
 }
 </script>
 
