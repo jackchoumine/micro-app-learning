@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:51:33
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-12 11:39:25
+ * @LastEditTime: 2024-01-12 17:51:35
  * @Description : 
 -->
 <script setup>
@@ -24,14 +24,21 @@ onMounted(() => {
 
 <template>
   <div class="host-app">
-    <div class="host-part">
-      <HelloWorld msg="Vite + Vue" />
-      <h2>vue host app</h2>
-      <div>来自子应用react18-app的数据: {{ dataFromChild }}</div>
+    <div class="part-1">
+      <div class="host-part">
+        <HelloWorld msg="Vite + Vue" />
+        <h2>vue host app</h2>
+        <div>来自子应用react18-app的数据: {{ dataFromChild }}</div>
+      </div>
+      <micro-app
+        name="react18-app"
+        url="http://localhost:3001/"
+        iframe
+        disable-memory-router></micro-app>
     </div>
     <micro-app
-      name="react18-app"
-      url="http://localhost:3001/"
+      name="vue3-app"
+      url="http://localhost:3002/"
       iframe
       disable-memory-router></micro-app>
   </div>
@@ -40,7 +47,11 @@ onMounted(() => {
 <style scoped>
 .host-app {
   display: flex;
+  flex-direction: column;
   background-color:aliceblue;
+}
+.part-1{
+  display: flex;
 }
 .host-part {
   display: flex;

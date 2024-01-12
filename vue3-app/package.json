@@ -1,0 +1,23 @@
+{
+  "name": "vue3-app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "npm run build && vite preview --port 4002",
+    "serve": "vite build && http-server dist --port 4002 -o"
+  },
+  "dependencies": {
+    "pinia": "^2.1.7",
+    "vue": "^3.3.11",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.2",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "http-server": "^14.1.1",
+    "vite": "^5.0.10"
+  }
+}
