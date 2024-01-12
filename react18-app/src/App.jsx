@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:52:11
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-12 11:21:12
+ * @LastEditTime: 2024-01-12 11:32:40
  * @Description :
  */
 import { useState } from 'react'
@@ -39,11 +39,27 @@ function App() {
   // }, [])
   console.log('react18-app App', window.__MICRO_APP_NAME__)
 
+  function increment() {
+    const newCount = count + 1
+    setCount(newCount)
+    window.microApp.dispatch(
+      {
+        from: 'react18-app',
+        count: newCount,
+      },
+      finishSend
+    )
+  }
+
+  function finishSend(isFinish) {
+    console.log('react18-app finishSend', isFinish)
+  }
+
   return (
     <div className='react18-app'>
       <h1>Vite + React</h1>
       <div className='card'>
-        <button onClick={() => setCount(count => count + 1)}>count is {count}</button>
+        <button onClick={increment}>count is {count}</button>
       </div>
       {window.__MICRO_APP_NAME__ ? (
         <h2>dataFromHost {JSON.stringify(dataFromHost)}</h2>
