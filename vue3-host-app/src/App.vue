@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:51:33
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-12 17:51:35
+ * @LastEditTime: 2024-01-12 18:04:55
  * @Description : 
 -->
 <script setup>
@@ -28,7 +28,8 @@ onMounted(() => {
       <div class="host-part">
         <HelloWorld msg="Vite + Vue" />
         <h2>vue host app</h2>
-        <div>来自子应用react18-app的数据: {{ dataFromChild }}</div>
+        <div>来自子应用react18-app的数据:</div>
+        <p>{{dataFromChild}}</p>
       </div>
       <micro-app
         name="react18-app"
