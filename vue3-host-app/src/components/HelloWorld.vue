@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:51:33
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-12 11:16:21
+ * @LastEditTime: 2024-01-12 11:40:54
  * @Description : 
 -->
 <script setup>
@@ -41,6 +41,6 @@ function increment() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
 }
 </style>

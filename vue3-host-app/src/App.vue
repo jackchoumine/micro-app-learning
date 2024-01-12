@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:51:33
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-12 11:34:29
+ * @LastEditTime: 2024-01-12 11:39:25
  * @Description : 
 -->
 <script setup>
@@ -26,6 +26,7 @@ onMounted(() => {
   <div class="host-app">
     <div class="host-part">
       <HelloWorld msg="Vite + Vue" />
+      <h2>vue host app</h2>
       <div>来自子应用react18-app的数据: {{ dataFromChild }}</div>
     </div>
     <micro-app
@@ -39,6 +40,7 @@ onMounted(() => {
 <style scoped>
 .host-app {
   display: flex;
+  background-color:aliceblue;
 }
 .host-part {
   display: flex;
