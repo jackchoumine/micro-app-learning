@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-12 17:36:43
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-12 17:46:51
+ * @LastEditTime: 2024-01-12 18:01:21
  * @Description : 
 -->
 <script setup>
@@ -45,7 +45,8 @@ nav {
 }
 
 nav a.router-link-exact-active {
-  color: var(--color-text);
+  /* color: var(--color-text); */
+  color: hsla(160, 100%, 37%, 1);
 }
 
 nav a.router-link-exact-active:hover {
