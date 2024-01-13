@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:52:11
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-14 01:07:01
+ * @LastEditTime: 2024-01-14 01:12:54
  * @Description :
  */
 import { useState } from 'react'
@@ -18,7 +18,9 @@ function App() {
   const [count, setCount] = useState(
     JSON.parse(localStorage.getItem('dataFromReactApp'))?.count || 0
   )
-  const [dataFromHost, setData] = useState(null)
+  const [countFromBase, setData] = useState(
+    JSON.parse(localStorage.getItem('baseCount')) ?? 0
+  )
 
   const [obj] = useState({})
 
@@ -78,7 +80,7 @@ function App() {
       </div>
       <p>{JSON.stringify(obj)}</p>
       {window.__MICRO_APP_NAME__ ? (
-        <h2>dataFromHost {JSON.stringify(dataFromHost)}</h2>
+        <h2>countFromBase {JSON.stringify(countFromBase)}</h2>
       ) : null}
       <nav>
         <NavLink to='/'>首页</NavLink>

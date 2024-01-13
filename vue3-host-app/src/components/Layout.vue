@@ -2,21 +2,40 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 22:56:53
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-14 00:10:50
+ * @LastEditTime: 2024-01-14 03:38:37
  * @Description : 
 -->
 <script setup>
-// TODO
+import microApp from '@micro-zoe/micro-app'
+import { useLocalStorage } from '../hooks';
+const [baseCount] = useLocalStorage('baseCount', 0)
+const [baseAge] = useLocalStorage('baseAge')
+function incrementAge() {
+  baseAge.value++
+  // 向子应用react18-app传递数据
+  microApp.setData('react18-app', {
+    baseAge: baseAge.value
+  }, (dataFromChild) => {
+    console.log('来自子应用react18-app的数据:', dataFromChild)
+  })
+  console.log('向子应用react18-app传递数据 baseAge:', baseAge.value)
+}
 </script>
 
 <template>
   <div class="layout">
     <nav>
       <!-- 导航栏 -->
-      <router-link to="/">Home</router-link>
-      <router-link to="/host">React-App</router-link>
-      <router-link to="/about">About</router-link>
-      <p>nav in host app</p>
+      <div class="nav-container">
+        <router-link to="/">Home</router-link>
+        <router-link to="/host">React-App</router-link>
+        <router-link to="/about">About</router-link>
+      </div>
+      <div class="data-container">
+        <p>nav in host app</p>
+        <p>baseCount {{ baseCount }}</p>
+        <p>baseAge {{ baseAge }} <button @click="incrementAge">baseAge +1</button></p>
+      </div>
     </nav>
     <main>
       <!-- 主体内容 -->
@@ -33,9 +52,18 @@
 
   nav {
     border-right: 1px solid #35495e;
-    display: flex;
-    flex-direction: column;
     margin: 0 10px;
+
+    .nav-container {
+      display: flex;
+      flex-direction: column;
+      height: 100px;
+      background-color: #fff;
+    }
+
+    .data-container {
+      background-color: lightblue;
+    }
   }
 
   a {

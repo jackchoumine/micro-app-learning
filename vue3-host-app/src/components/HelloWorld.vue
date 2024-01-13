@@ -2,23 +2,25 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:51:33
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-14 00:20:49
+ * @LastEditTime: 2024-01-14 03:32:16
  * @Description : 
 -->
 <script setup>
-import { ref } from 'vue'
 import microApp from '@micro-zoe/micro-app'
 import { useLocalStorage } from "../hooks";
 
 defineProps({
   msg: String,
 })
-const count = useLocalStorage('count', 0)
+
+const [count,remove] = useLocalStorage('baseCount', 0)
 
 function increment() {
+  // console.log('count.value', count.value)
   count.value++
+  // 向子应用react18-app传递数据
   microApp.setData('react18-app',{
-    count: count.value
+    baseCount: count.value
   },(dataFromChild)=>{
     console.log('来自子应用react18-app的数据:', dataFromChild)
   })
