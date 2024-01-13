@@ -2,11 +2,11 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:52:11
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-13 18:06:16
+ * @LastEditTime: 2024-01-13 18:13:30
  * @Description :
  */
 import { useState } from 'react'
-import { Button } from 'antd'
+import { Button, Breadcrumb } from 'antd'
 import './App.css'
 
 function App() {
@@ -68,6 +68,19 @@ function App() {
       {window.__MICRO_APP_NAME__ ? (
         <h2>dataFromHost {JSON.stringify(dataFromHost)}</h2>
       ) : null}
+      <Breadcrumb
+        items={[
+          {
+            title: 'Home',
+          },
+          {
+            title: <a href=''>Application List</a>,
+          },
+          {
+            title: 'An Application',
+          },
+        ]}
+      />
     </div>
   )
 }
