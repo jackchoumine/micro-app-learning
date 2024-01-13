@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:52:11
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-13 18:40:07
+ * @LastEditTime: 2024-01-13 18:50:56
  * @Description :
  */
 import { useState } from 'react'
@@ -48,13 +48,15 @@ function App() {
   function increment() {
     const newCount = count + 1
     setCount(newCount)
-    window.microApp.dispatch(
-      {
-        from: 'react18-app',
-        count: newCount,
-      },
-      finishSend
-    )
+    if (window.__MICRO_APP_ENVIRONMENT__) {
+      window.microApp.dispatch(
+        {
+          from: 'react18-app',
+          count: newCount,
+        },
+        finishSend
+      )
+    }
   }
 
   function finishSend(isFinish) {
