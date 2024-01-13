@@ -2,18 +2,18 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:51:33
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-12 11:40:54
+ * @LastEditTime: 2024-01-14 00:20:49
  * @Description : 
 -->
 <script setup>
 import { ref } from 'vue'
 import microApp from '@micro-zoe/micro-app'
+import { useLocalStorage } from "../hooks";
 
 defineProps({
   msg: String,
 })
-
-const count = ref(0)
+const count = useLocalStorage('count', 0)
 
 function increment() {
   count.value++
@@ -29,7 +29,6 @@ function increment() {
 <template>
   <div class="hello-world">
     <h1>{{ msg }}</h1>
-
     <div class="card">
       <button type="button" @click="increment">count is {{ count }}</button>
     </div>

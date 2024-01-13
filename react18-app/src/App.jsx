@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:52:11
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-13 18:50:56
+ * @LastEditTime: 2024-01-14 01:07:01
  * @Description :
  */
 import { useState } from 'react'
@@ -15,8 +15,12 @@ import About from './pages/About'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(
+    JSON.parse(localStorage.getItem('dataFromReactApp'))?.count || 0
+  )
   const [dataFromHost, setData] = useState(null)
+
+  const [obj] = useState({})
 
   // useEffect(() => {
   if (window.__MICRO_APP_NAME__ === 'react18-app') {
@@ -72,6 +76,7 @@ function App() {
           count is {count}
         </Button>
       </div>
+      <p>{JSON.stringify(obj)}</p>
       {window.__MICRO_APP_NAME__ ? (
         <h2>dataFromHost {JSON.stringify(dataFromHost)}</h2>
       ) : null}

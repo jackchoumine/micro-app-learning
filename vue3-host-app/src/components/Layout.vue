@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 22:56:53
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-13 23:55:48
+ * @LastEditTime: 2024-01-14 00:10:50
  * @Description : 
 -->
 <script setup>
@@ -14,7 +14,7 @@
     <nav>
       <!-- 导航栏 -->
       <router-link to="/">Home</router-link>
-      <router-link to="/host">host</router-link>
+      <router-link to="/host">React-App</router-link>
       <router-link to="/about">About</router-link>
       <p>nav in host app</p>
     </nav>
