@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:23:25
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-13 23:26:09
+ * @LastEditTime: 2024-01-13 23:49:47
  * @Description :
  */
 import { createRouter, createWebHistory } from 'vue-router'
@@ -13,6 +13,7 @@ const About = { template: '<div>About</div>' }
 // 我们后面再讨论嵌套路由。
 const routes = [
   { path: '/', component: () => import('../views/Home.vue') },
+  { path: '/host', component: () => import('../views/HostPage.vue') },
   { path: '/about', component: () => import('../views/About.vue') },
 ]
 

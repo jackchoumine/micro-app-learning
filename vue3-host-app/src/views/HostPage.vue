@@ -1,27 +1,26 @@
 <!--
  * @Author      : ZhouQiJun
- * @Date        : 2024-01-13 23:25:07
+ * @Date        : 2024-01-13 23:49:56
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-13 23:53:37
+ * @LastEditTime: 2024-01-13 23:53:06
  * @Description : 
 -->
 <script setup>
-// TODO
+//
 </script>
 
 <template>
-  <div class="about-page">
-    <h2>About Page In Host</h2>
+  <div class="host-page">
     <micro-app
-      name="vue3-app"
-      url="http://localhost:3002/"
+      name="react18-app"
+      url="http://localhost:3001/"
       iframe
       disable-memory-router></micro-app>
   </div>
 </template>
 
 <style scoped lang="scss">
-.about-page {
+.host-page {
   // scss code
 }
 </style>
