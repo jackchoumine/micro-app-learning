@@ -2,13 +2,14 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:52:11
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-11 17:22:53
+ * @LastEditTime: 2024-01-13 18:23:58
  * @Description :
  */
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
+import { BrowserRouter } from 'react-router-dom'
 
 if (window.__MICRO_APP_ENVIRONMENT__) {
   console.log('我在微前端环境中')
@@ -22,6 +23,8 @@ if (window.__MICRO_APP_ENVIRONMENT__) {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 )

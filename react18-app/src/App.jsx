@@ -2,11 +2,16 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:52:11
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-13 18:13:30
+ * @LastEditTime: 2024-01-13 18:40:07
  * @Description :
  */
 import { useState } from 'react'
-import { Button, Breadcrumb } from 'antd'
+import { Button } from 'antd'
+// import { Link } from 'react-router-dom'
+import { NavLink, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import Product from './pages/Product'
+import About from './pages/About'
 import './App.css'
 
 function App() {
@@ -68,19 +73,16 @@ function App() {
       {window.__MICRO_APP_NAME__ ? (
         <h2>dataFromHost {JSON.stringify(dataFromHost)}</h2>
       ) : null}
-      <Breadcrumb
-        items={[
-          {
-            title: 'Home',
-          },
-          {
-            title: <a href=''>Application List</a>,
-          },
-          {
-            title: 'An Application',
-          },
-        ]}
-      />
+      <nav>
+        <NavLink to='/'>首页</NavLink>
+        <NavLink to='/product'>产品</NavLink>
+        <NavLink to='/about'>关于</NavLink>
+      </nav>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/product' element={<Product />} />
+        <Route path='/about' element={<About />} />
+      </Routes>
     </div>
   )
 }
