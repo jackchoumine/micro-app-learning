@@ -2,10 +2,11 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:52:11
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-12 11:37:58
+ * @LastEditTime: 2024-01-13 18:06:16
  * @Description :
  */
 import { useState } from 'react'
+import { Button } from 'antd'
 import './App.css'
 
 function App() {
@@ -60,7 +61,9 @@ function App() {
       <h1>Vite + React</h1>
       {window.__MICRO_APP_NAME__ ? <h2>{window.__MICRO_APP_NAME__}</h2> : null}
       <div className='card'>
-        <button onClick={increment}>count is {count}</button>
+        <Button onClick={increment} type='primary'>
+          count is {count}
+        </Button>
       </div>
       {window.__MICRO_APP_NAME__ ? (
         <h2>dataFromHost {JSON.stringify(dataFromHost)}</h2>
