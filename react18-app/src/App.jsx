@@ -2,10 +2,16 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:52:11
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-12 11:37:58
+ * @LastEditTime: 2024-01-13 18:50:56
  * @Description :
  */
 import { useState } from 'react'
+import { Button } from 'antd'
+// import { Link } from 'react-router-dom'
+import { NavLink, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import Product from './pages/Product'
+import About from './pages/About'
 import './App.css'
 
 function App() {
@@ -42,13 +48,15 @@ function App() {
   function increment() {
     const newCount = count + 1
     setCount(newCount)
-    window.microApp.dispatch(
-      {
-        from: 'react18-app',
-        count: newCount,
-      },
-      finishSend
-    )
+    if (window.__MICRO_APP_ENVIRONMENT__) {
+      window.microApp.dispatch(
+        {
+          from: 'react18-app',
+          count: newCount,
+        },
+        finishSend
+      )
+    }
   }
 
   function finishSend(isFinish) {
@@ -60,11 +68,23 @@ function App() {
       <h1>Vite + React</h1>
       {window.__MICRO_APP_NAME__ ? <h2>{window.__MICRO_APP_NAME__}</h2> : null}
       <div className='card'>
-        <button onClick={increment}>count is {count}</button>
+        <Button onClick={increment} type='primary'>
+          count is {count}
+        </Button>
       </div>
       {window.__MICRO_APP_NAME__ ? (
         <h2>dataFromHost {JSON.stringify(dataFromHost)}</h2>
       ) : null}
+      <nav>
+        <NavLink to='/'>首页</NavLink>
+        <NavLink to='/product'>产品</NavLink>
+        <NavLink to='/about'>关于</NavLink>
+      </nav>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/product' element={<Product />} />
+        <Route path='/about' element={<About />} />
+      </Routes>
     </div>
   )
 }
