@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:51:33
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-14 03:24:57
+ * @LastEditTime: 2024-01-14 03:43:24
  * @Description : 
 -->
 <script setup>
@@ -14,7 +14,7 @@ import { useLocalStorage } from './hooks';
 // 在执行 microApp.start() 后此值才会生效
 console.log('vue3-host-app 是主应用吗', window.__MICRO_APP_BASE_APPLICATION__)
 
-// const dataFromReactApp = useLocalStorage('dataFromReactApp')
+const [dataFromReactApp] = useLocalStorage('dataFromReactApp')
 
 const [count] = useLocalStorage('baseCount', 0)
 
@@ -30,11 +30,11 @@ watch(count, (newVal) => {
 })
 
 onMounted(() => {
-  // microApp.addDataListener('react18-app', (dataFromChild) => {
-  //   console.log('来自子应用react18-app的数据:', dataFromChild)
-  //   dataFromReactApp.value = dataFromChild
-  //   return true // 返回值会传递给子应用
-  // })
+  microApp.addDataListener('react18-app', (dataFromChild) => {
+    console.log('来自子应用react18-app的数据:', dataFromChild)
+    dataFromReactApp.value = dataFromChild
+    return true // 返回值会传递给子应用
+  })
 })
 </script>
 
