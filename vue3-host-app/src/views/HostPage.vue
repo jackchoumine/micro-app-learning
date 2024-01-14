@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:49:56
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-14 00:11:49
+ * @LastEditTime: 2024-01-14 10:54:55
  * @Description : 
 -->
 <script setup>
@@ -15,6 +15,7 @@
     <micro-app
       name="react18-app"
       url="http://localhost:3001/"
+      baseroute="/host"
       iframe
       disable-memory-router></micro-app>
   </div>
