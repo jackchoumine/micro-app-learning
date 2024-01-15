@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:57:12
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-15 21:58:02
+ * @LastEditTime: 2024-01-15 22:00:08
  * @Description :
  */
 import { customRef, nextTick } from 'vue'
@@ -32,7 +32,7 @@ function _useLocalStorage(key, initialValue = null) {
         // 把初始化的值存进去
         window.localStorage.setItem(key, strValue)
         // debugger
-        console.log('get', strValue)
+        // console.log('get', strValue)
         return initialValue
       },
       // 监听数据变化
