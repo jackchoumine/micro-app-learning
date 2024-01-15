@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:52:11
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-14 23:26:59
+ * @LastEditTime: 2024-01-15 10:27:08
  * @Description :
  */
 import React from 'react'
@@ -23,7 +23,7 @@ if (window.__MICRO_APP_ENVIRONMENT__) {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename='host'>
+    <BrowserRouter basename={window.__MICRO_APP_BASE_ROUTE__ || ''}>
       <App />
     </BrowserRouter>
   </React.StrictMode>
