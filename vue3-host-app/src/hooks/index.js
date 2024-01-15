@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:57:12
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-15 15:19:45
+ * @LastEditTime: 2024-01-15 21:58:02
  * @Description :
  */
 import { customRef, nextTick } from 'vue'
@@ -37,7 +37,7 @@ function _useLocalStorage(key, initialValue = null) {
       },
       // 监听数据变化
       set: newVal => {
-        console.log('set', newVal)
+        // console.log('set', newVal)
         const strValue = JSON.stringify(newVal)
         // console.log('set', newVal, strValue)
         window.localStorage.setItem(key, strValue)
@@ -52,7 +52,7 @@ function localStorage() {
   const map = new Map()
 
   return (key, initialValue = null) => {
-    console.log('localStorage --->', key, initialValue)
+    // console.log('localStorage --->', key, initialValue)
     if (!map.get(key)) {
       // 确保  useLocalStorage(key, initialValue) 也能设置 localStorage
       window.localStorage.setItem(key, initialValue)
@@ -73,7 +73,7 @@ function localStorage() {
     // map.delete(key)
     nextTick(() => {
       window.localStorage.removeItem(key)
-      console.log('removeItem --->', key, initialValue)
+      // console.log('removeItem --->', key, initialValue)
       //  console.log('removeItem', key)
     })
     return true
