@@ -2,10 +2,11 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:57:12
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-14 03:29:06
+ * @LastEditTime: 2024-01-15 15:19:45
  * @Description :
  */
 import { customRef, nextTick } from 'vue'
+
 // import { createGlobalState } from '@vueuse/core'
 
 // example
@@ -50,6 +51,19 @@ function _useLocalStorage(key, initialValue = null) {
 function localStorage() {
   const map = new Map()
 
+  return (key, initialValue = null) => {
+    console.log('localStorage --->', key, initialValue)
+    if (!map.get(key)) {
+      // 确保  useLocalStorage(key, initialValue) 也能设置 localStorage
+      window.localStorage.setItem(key, initialValue)
+      const state = _useLocalStorage(key, initialValue)
+      const remove = () => removeItem(key)
+      map.set(key, [state, remove])
+      return [state, remove]
+    }
+    return map.get(key)
+  }
+
   function removeItem(key) {
     if (!key) return false
     if (window.localStorage.getItem(key) === null) return false
@@ -59,18 +73,9 @@ function localStorage() {
     // map.delete(key)
     nextTick(() => {
       window.localStorage.removeItem(key)
+      console.log('removeItem --->', key, initialValue)
       //  console.log('removeItem', key)
     })
     return true
-  }
-
-  return (key, initialValue) => {
-    if (!map.get(key)) {
-      const state = _useLocalStorage(key, initialValue)
-      const remove = () => removeItem(key)
-      map.set(key, [state, remove])
-      return [state, remove]
-    }
-    return map.get(key)
   }
 }

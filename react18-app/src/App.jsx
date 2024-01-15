@@ -2,13 +2,13 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:52:11
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-14 01:12:54
+ * @LastEditTime: 2024-01-15 15:47:48
  * @Description :
  */
 import { Button } from 'antd'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 // import { Link } from 'react-router-dom'
-import { NavLink, Route, Routes } from 'react-router-dom'
+import { NavLink, Route, Routes, useLocation } from 'react-router-dom'
 
 import './App.css'
 import About from './pages/About'
@@ -23,14 +23,13 @@ function App() {
     JSON.parse(localStorage.getItem('baseCount')) ?? 0
   )
 
-  const [obj] = useState({})
-
   // useEffect(() => {
   if (window.__MICRO_APP_NAME__ === 'react18-app') {
     // 监听来自主应用的通信
     // NOTE  microApp.addDataListener 不生效
     window.microApp.addDataListener(data => {
       console.log('react18-app 收到数据', data)
+      // debugger
       // setData(preData => {
       //   console.log('react18-app setData', preData, data)
       //   return { ...preData, ...data }
@@ -70,6 +69,19 @@ function App() {
     console.log('react18-app finishSend', isFinish)
   }
 
+  const location = useLocation()
+  useEffect(() => {
+    const fullPath = `/host${location.pathname}`
+    window.localStorage.setItem('initPath', fullPath)
+    window.microApp.dispatch(
+      {
+        from: 'react18-app',
+        initPath: fullPath,
+      },
+      finishSend
+    )
+  }, [location.pathname])
+
   return (
     <div className="react18-app">
       <h1>Vite + React</h1>
@@ -79,7 +91,7 @@ function App() {
           count is {count}
         </Button>
       </div>
-      <p>{JSON.stringify(obj)}</p>
+      <p>{JSON.stringify(location)}</p>
       {window.__MICRO_APP_NAME__ ? (
         <h2>countFromBase {JSON.stringify(countFromBase)}</h2>
       ) : null}

@@ -2,10 +2,11 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:23:25
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-13 23:49:47
+ * @LastEditTime: 2024-01-15 15:56:44
  * @Description :
  */
 import { createRouter, createWebHistory } from 'vue-router'
+
 const About = { template: '<div>About</div>' }
 
 // 2. 定义一些路由
@@ -13,7 +14,11 @@ const About = { template: '<div>About</div>' }
 // 我们后面再讨论嵌套路由。
 const routes = [
   { path: '/', component: () => import('../views/Home.vue') },
-  { path: '/host', component: () => import('../views/HostPage.vue') },
+  {
+    path: '/host/:anyPath*',
+    name: 'host',
+    component: () => import('../views/HostPage.vue'),
+  },
   { path: '/about', component: () => import('../views/About.vue') },
 ]
 
@@ -24,4 +29,5 @@ export const router = createRouter({
   // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。
   history: createWebHistory(), //createWebHashHistory(),
   routes,
+  // strict: true, // applies to all routes
 })
