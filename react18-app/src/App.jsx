@@ -5,14 +5,15 @@
  * @LastEditTime: 2024-01-14 01:12:54
  * @Description :
  */
-import { useState } from 'react'
 import { Button } from 'antd'
+import { useState } from 'react'
 // import { Link } from 'react-router-dom'
-import { NavLink, Routes, Route } from 'react-router-dom'
+import { NavLink, Route, Routes } from 'react-router-dom'
+
+import './App.css'
+import About from './pages/About'
 import Home from './pages/Home'
 import Product from './pages/Product'
-import About from './pages/About'
-import './App.css'
 
 function App() {
   const [count, setCount] = useState(
@@ -70,11 +71,11 @@ function App() {
   }
 
   return (
-    <div className='react18-app'>
+    <div className="react18-app">
       <h1>Vite + React</h1>
       {window.__MICRO_APP_NAME__ ? <h2>{window.__MICRO_APP_NAME__}</h2> : null}
-      <div className='card'>
-        <Button onClick={increment} type='primary'>
+      <div className="card">
+        <Button onClick={increment} type="primary">
           count is {count}
         </Button>
       </div>
@@ -83,14 +84,14 @@ function App() {
         <h2>countFromBase {JSON.stringify(countFromBase)}</h2>
       ) : null}
       <nav>
-        <NavLink to='/'>首页</NavLink>
-        <NavLink to='/product'>产品</NavLink>
-        <NavLink to='/about'>关于</NavLink>
+        <NavLink to="/">首页</NavLink>
+        <NavLink to="/product">产品</NavLink>
+        <NavLink to="/about">关于</NavLink>
       </nav>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/product' element={<Product />} />
-        <Route path='/about' element={<About />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </div>
   )
