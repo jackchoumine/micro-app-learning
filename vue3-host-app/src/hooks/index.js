@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:57:12
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-15 22:00:08
+ * @LastEditTime: 2024-01-15 23:20:50
  * @Description :
  */
 import { customRef, nextTick } from 'vue'
@@ -54,8 +54,12 @@ function localStorage() {
   return (key, initialValue = null) => {
     // console.log('localStorage --->', key, initialValue)
     if (!map.get(key)) {
-      // 确保  useLocalStorage(key, initialValue) 也能设置 localStorage
-      window.localStorage.setItem(key, initialValue)
+      // 确保这样调用 
+      // useLocalStorage(key, initialValue) 
+      // 也能设置 localStorage
+      if(window.localStorage.getItem(key) === null){
+        window.localStorage.setItem(key, initialValue)
+      }
       const state = _useLocalStorage(key, initialValue)
       const remove = () => removeItem(key)
       map.set(key, [state, remove])
