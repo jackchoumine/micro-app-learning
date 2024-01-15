@@ -2,32 +2,17 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:49:56
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-15 22:05:20
+ * @LastEditTime: 2024-01-15 22:44:07
  * @Description : 
 -->
 <script setup>
 import microApp from '@micro-zoe/micro-app'
-import { nextTick, onMounted, watch, watchEffect } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import {  onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 
 import { useLocalStorage } from '../hooks'
 
-const router = useRouter()
 const route = useRoute()
-
-// watch(
-//   () => route.fullPath,
-//   val => {
-//     console.log('route.fullPath', val)
-//     sendDataTo('react18-app', {
-//       initPath: route.fullPath,
-//     })
-//   },
-//   {
-//     immediate: true,
-//   }
-// )
-
 const [initPath] = useLocalStorage('initPath', location.pathname)
 
 function sendDataTo(name, data) {
@@ -36,46 +21,28 @@ function sendDataTo(name, data) {
     console.log('来自子应用react18-app的数据:', dataFromChild)
   })
 }
-function appMounted() {
-  console.log('react18-app mounted')
-  // const initPath =
-  // microApp.router.push({
-  //   name: 'react18-app',
-  //   path: initPath.value,
-  //   replace: true,
-  // })
 
-  console.log('initPath', initPath.value)
-  const childAppPath = decodeURIComponent(initPath.value.slice(5))
-  console.log('initPath -2', childAppPath)
-  router.push({
-    path: initPath.value
-    // name: 'host',
-    // params: {
-    //   anyPath: childAppPath,
-    // },
-    // path: initPath.value,
-  })
-}
+// 监听子应用react18-app的数据变化
+onMounted(onAppDataChange)
 
-onMounted(() => {
+function onAppDataChange(){
   microApp.addDataListener('react18-app', dataFromChild => {
     console.log('来自子应用react18-app的数据:', dataFromChild)
     initPath.value = dataFromChild.initPath
     return route.fullPath // 返回值会传递给子应用
   })
-})
+}
 </script>
 
 <template>
   <div class="host-page">
     <h3>this is react-app in Vue component {{ initPath }}</h3>
+    <!-- @mounted="onAppDataChange" -->
     <micro-app
       name="react18-app"
       url="http://localhost:3001/"
       baseroute="/host"
       iframe
-      @mounted="appMounted"
       disable-memory-router></micro-app>
   </div>
 </template>

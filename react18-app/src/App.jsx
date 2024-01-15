@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:52:11
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-15 22:12:29
+ * @LastEditTime: 2024-01-15 22:17:03
  * @Description :
  */
 import { Button } from 'antd'
@@ -72,7 +72,6 @@ function App() {
   const location = useLocation()
   useEffect(() => {
     const fullPath = `/host${location.pathname}`
-    window.localStorage.setItem('initPath', fullPath)
     window.microApp.dispatch(
       {
         from: 'react18-app',
