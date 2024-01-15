@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:49:56
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-15 17:50:45
+ * @LastEditTime: 2024-01-15 22:05:20
  * @Description : 
 -->
 <script setup>
@@ -15,18 +15,18 @@ import { useLocalStorage } from '../hooks'
 const router = useRouter()
 const route = useRoute()
 
-watch(
-  () => route.fullPath,
-  val => {
-    console.log('route.fullPath', val)
-    sendDataTo('react18-app', {
-      initPath: route.fullPath,
-    })
-  },
-  {
-    immediate: true,
-  }
-)
+// watch(
+//   () => route.fullPath,
+//   val => {
+//     console.log('route.fullPath', val)
+//     sendDataTo('react18-app', {
+//       initPath: route.fullPath,
+//     })
+//   },
+//   {
+//     immediate: true,
+//   }
+// )
 
 const [initPath] = useLocalStorage('initPath', location.pathname)
 
@@ -38,20 +38,22 @@ function sendDataTo(name, data) {
 }
 function appMounted() {
   console.log('react18-app mounted')
-  const microAppDom = document.querySelector('micro-app[name="react18-app"]')
-  console.log('microAppDom', microAppDom)
   // const initPath =
-  microApp.router.push({
-    name: 'react18-app',
-    path: initPath.value,
-    replace: true,
-  })
+  // microApp.router.push({
+  //   name: 'react18-app',
+  //   path: initPath.value,
+  //   replace: true,
+  // })
+
+  console.log('initPath', initPath.value)
   const childAppPath = decodeURIComponent(initPath.value.slice(5))
+  console.log('initPath -2', childAppPath)
   router.push({
-    name: 'host',
-    params: {
-      anyPath: childAppPath,
-    },
+    path: initPath.value
+    // name: 'host',
+    // params: {
+    //   anyPath: childAppPath,
+    // },
     // path: initPath.value,
   })
 }

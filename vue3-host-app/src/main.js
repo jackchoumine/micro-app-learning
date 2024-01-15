@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:51:33
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-13 23:26:36
+ * @LastEditTime: 2024-01-15 22:10:07
  * @Description :
  */
 import { createApp } from 'vue'
@@ -14,21 +14,21 @@ import { router } from './router'
 
 microApp.start({
   lifeCycles: {
-    created(e) {
-      console.log('created')
-    },
-    beforemount(e) {
-      console.log('beforemount')
-    },
-    mounted(e) {
-      console.log('mounted')
-    },
-    unmount(e) {
-      console.log('unmount')
-    },
-    error(e) {
-      console.log('error')
-    },
+    // created(e) {
+    //   console.log('created')
+    // },
+    // beforemount(e) {
+    //   console.log('beforemount')
+    // },
+    // mounted(e) {
+    //   console.log('mounted')
+    // },
+    // unmount(e) {
+    //   console.log('unmount')
+    // },
+    // error(e) {
+    //   console.log('error')
+    // },
   },
 })
 

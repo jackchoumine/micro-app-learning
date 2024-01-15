@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:52:11
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-15 15:47:48
+ * @LastEditTime: 2024-01-15 22:12:29
  * @Description :
  */
 import { Button } from 'antd'
@@ -49,7 +49,7 @@ function App() {
     })
   }
   // }, [])
-  console.log('react18-app App', window.__MICRO_APP_NAME__)
+  // console.log('react18-app App', window.__MICRO_APP_NAME__)
 
   function increment() {
     const newCount = count + 1
