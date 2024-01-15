@@ -2,18 +2,29 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:49:56
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-15 22:44:07
+ * @LastEditTime: 2024-01-15 23:09:57
  * @Description : 
 -->
 <script setup>
 import microApp from '@micro-zoe/micro-app'
-import {  onMounted } from 'vue'
+import {  onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { useLocalStorage } from '../hooks'
+const [initPath] = useLocalStorage('initPath', location.pathname)
 
 const route = useRoute()
-const [initPath] = useLocalStorage('initPath', location.pathname)
+watch(() => route.fullPath, (newVal, oldVal)=>{
+  console.log('route.fullPath',newVal,oldVal)
+  initPath.value = newVal
+  if(newVal !== oldVal){
+    sendDataTo('react18-app', {
+      __base_app_to_path:newVal,
+      __base_app_old_path:oldVal
+    })
+  }
+})
+
 
 function sendDataTo(name, data) {
   // 向子应用react18-app传递数据

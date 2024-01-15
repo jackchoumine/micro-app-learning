@@ -2,13 +2,13 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:52:11
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-15 22:17:03
+ * @LastEditTime: 2024-01-15 23:11:17
  * @Description :
  */
 import { Button } from 'antd'
 import { useEffect, useState } from 'react'
 // import { Link } from 'react-router-dom'
-import { NavLink, Route, Routes, useLocation } from 'react-router-dom'
+import { NavLink, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 
 import './App.css'
 import About from './pages/About'
@@ -22,7 +22,7 @@ function App() {
   const [countFromBase, setData] = useState(
     JSON.parse(localStorage.getItem('baseCount')) ?? 0
   )
-
+  const navigate = useNavigate()
   // useEffect(() => {
   if (window.__MICRO_APP_NAME__ === 'react18-app') {
     // 监听来自主应用的通信
@@ -40,6 +40,9 @@ function App() {
       //  count 3 执行 6 次
       //  ……
       setData(data)
+      // {__base_app_to_path:'',__base_app_old_path:''}
+      // 订阅基座应用路由变化，更新当前应用路由
+      navigate(data.__base_app_to_path.replace('/host', ''))
       // 返回值将传递给主应用
       return {
         success: true,

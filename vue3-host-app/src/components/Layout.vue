@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 22:56:53
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-14 03:38:37
+ * @LastEditTime: 2024-01-15 22:51:21
  * @Description : 
 -->
 <script setup>
@@ -30,6 +30,7 @@ function incrementAge() {
         <router-link to="/">Home</router-link>
         <router-link to="/host">React-App</router-link>
         <router-link to="/about">About</router-link>
+        <router-link to="/host/about">host/About</router-link>
       </div>
       <div class="data-container">
         <p>nav in host app</p>
