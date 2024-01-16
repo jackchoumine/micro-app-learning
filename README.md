@@ -222,6 +222,7 @@ const Product = () => {
       {
         from: 'react18-app',
         toPath: '/',
+        // 确保数据发生变化，否则不会发送
          __forceUpdate: Date.now(),
       },
       () => {
@@ -279,6 +280,6 @@ vue 子应用
 
 两种解决方案：
 
-1. 在发送数据时，添加一个变化的key，比如 `__forceUpdate` ，这样就能保证数据每次都会变化，从而触发基座应用的监听回调
+1. 在发送数据时，添加一个变化的 key，比如 `__forceUpdate`。
 
-2. 使用 `forceDispatch` 方法，该方法会强制发送数据，不会判断数据是否发生变化
+2. 使用 `forceDispatch` 方法，该方法会强制发送数据，不会判断数据是否发生变化。
