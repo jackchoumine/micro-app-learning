@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "serve": "vite build && http-server dist -p 4001 -o"
+    "serve": "vite build && yarn copy404 && http-server dist -p 5000 -o",
+    "copy404": "cpy ./dist/index.html ./  --rename=404.html"
   },
   "dependencies": {
     "@micro-zoe/micro-app": "^1.0.0-rc.3",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@vitejs/plugin-vue": "^4.5.2",
+    "cpy": "^11.0.0",
     "http-server": "^14.1.1",
     "prettier": "^3.2.2",
     "sass": "^1.69.7",

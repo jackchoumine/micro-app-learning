@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "serve": "vite build && http-server dist -p 3001 --cors"
+    "serve": "vite build && http-server dist -p 3001 --cors -o"
   },
   "dependencies": {
     "@micro-zoe/micro-app": "^1.0.0-rc.3",
