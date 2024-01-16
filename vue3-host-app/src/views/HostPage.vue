@@ -2,19 +2,16 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:49:56
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-16 11:29:13
+ * @LastEditTime: 2024-01-16 12:02:04
  * @Description : 
 -->
 <script setup>
 import microApp from '@micro-zoe/micro-app'
 import { onMounted } from 'vue'
-import { useRoute } from 'vue-router'
-
-import { useLocalStorage } from '../hooks'
+import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
-
-// const [initPath] = useLocalStorage('initPath', location.pathname)
+const router = useRouter()
 
 // 监听子应用react18-app的数据变化
 onMounted(onAppDataChange)
@@ -22,15 +19,16 @@ onMounted(onAppDataChange)
 function onAppDataChange() {
   microApp.addDataListener('react18-app', dataFromChild => {
     console.log('来自子应用react18-app的数据:', dataFromChild)
-    // initPath.value = dataFromChild.initPath
-    return route.fullPath // 返回值会传递给子应用
+    if (dataFromChild.toPath && dataFromChild.toPath !== route.fullPath) {
+      router.push(dataFromChild.toPath)
+    }
   })
 }
 </script>
 
 <template>
   <div class="host-page">
-    <h3>this is react18-app in Vue component {{ initPath }}</h3>
+    <h3>this is react18-app in Vue component</h3>
     <!-- @mounted="onAppDataChange" -->
     <micro-app
       name="react18-app"

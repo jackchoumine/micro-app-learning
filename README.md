@@ -8,6 +8,7 @@ micro-app 学习
 
 1. 用户切换基座应用的路由，子应用也会跟着切换路由
 2. 用户切换子应用的路由，基座应用也会跟着切换路由
+3. 用户在子应用A中切换到子应用B，通过第二种方式实现
 
 基于应用之间的**数据通信**，实现路由相互控制。
 
@@ -163,3 +164,121 @@ function addDataListener() {
     }
 }
 ```
+
+2. 子应用控制基座应用路由
+
+基本思路：需要基座应用改变路由的时候，子应用通知基座应用切换路由
+
+> 基座应用中心监听子应用发送的通知，在子应用的路由跳转时，通知基座应用切换路由
+
+vue 基座
+
+```html
+<script setup>
+    import microApp from '@micro-zoe/micro-app'
+    import {
+        onMounted
+    } from 'vue'
+    import {
+        useRoute,
+        useRouter
+    } from 'vue-router'
+
+    const route = useRoute()
+    const router = useRouter()
+
+    // 监听子应用react18-app的数据变化
+    onMounted(onAppDataChange)
+
+    function onAppDataChange() {
+        microApp.addDataListener('react18-app', dataFromChild => {
+            console.log('来自子应用react18-app的数据:', dataFromChild)
+            if (dataFromChild.toPath && dataFromChild.toPath !== route.fullPath) {
+                router.push(dataFromChild.toPath)
+            }
+        })
+    }
+</script>
+
+<template>
+    <div class="host-page">
+        <h3>this is react18-app in Vue component</h3>
+        <!-- @mounted="onAppDataChange" -->
+        <micro-app name="react18-app" url="http://localhost:3001/" baseroute="/react18-app" iframe disable-memory-router></micro-app>
+    </div>
+</template>
+```
+
+react 子应用
+
+```jsx
+const Product = () => {
+  // 向基座应用发送通知，切换路由
+  function goBaseHome() {
+    sendDataToBase()
+  }
+  function sendDataToBase() {
+    window.microApp.dispatch(
+      {
+        from: 'react18-app',
+        toPath: '/',
+         __forceUpdate: Date.now(),
+      },
+      () => {
+        console.log('发送成功')
+      }
+    )
+  }
+  return (
+    <div>
+      <h1>Product Page</h1>
+      {window.__MICRO_APP_ENVIRONMENT__ ? (
+        <button onClick={goBaseHome} type="primary">
+          go to base home
+        </button>
+      ) : null}
+    </div>
+  )
+}
+
+export default Product
+```
+
+vue 子应用
+
+```html
+<script setup>
+    const is_in_micro_app = window.__MICRO_APP_ENVIRONMENT__
+
+    function goToReactApp() {
+        console.log('go to react18-app')
+        // NOTE window.microApp.dispatch 数据没有发生变化，不会触发基座应用的监听回调
+        // window.microApp.dispatch(
+        window.microApp.forceDispatch({
+                from: 'vue3-app',
+                toPath: '/react18-app/about',
+            },
+            () => {
+                console.log('发送成功')
+            }
+        )
+    }
+</script>
+
+<template>
+    <div class="about">
+        <h1>This is an about page</h1>
+        <button v-if="is_in_micro_app" @click="goToReactApp">
+            go to react18-app
+        </button>
+    </div>
+</template>
+```
+
+> micro-app 会遍历新旧值中的每个 key，判断值是否有变化（注意：**只会遍历第一层key**），无变化则不会发送，有变化则将新旧值进行合并后发送。
+
+两种解决方案：
+
+1. 在发送数据时，添加一个变化的key，比如 `__forceUpdate` ，这样就能保证数据每次都会变化，从而触发基座应用的监听回调
+
+2. 使用 `forceDispatch` 方法，该方法会强制发送数据，不会判断数据是否发生变化
