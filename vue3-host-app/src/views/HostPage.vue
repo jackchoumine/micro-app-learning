@@ -2,14 +2,17 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:49:56
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-16 09:42:30
+ * @LastEditTime: 2024-01-16 09:54:32
  * @Description : 
 -->
 <script setup>
 import microApp from '@micro-zoe/micro-app'
 import { onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 
 import { useLocalStorage } from '../hooks'
+
+const route = useRoute()
 
 const [initPath] = useLocalStorage('initPath', location.pathname)
 
