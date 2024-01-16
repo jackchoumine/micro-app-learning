@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:49:56
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-16 09:54:32
+ * @LastEditTime: 2024-01-16 10:17:29
  * @Description : 
 -->
 <script setup>
@@ -30,12 +30,12 @@ function onAppDataChange() {
 
 <template>
   <div class="host-page">
-    <h3>this is react-app in Vue component {{ initPath }}</h3>
+    <h3>this is react18-app in Vue component {{ initPath }}</h3>
     <!-- @mounted="onAppDataChange" -->
     <micro-app
       name="react18-app"
       url="http://localhost:3001/"
-      baseroute="/react-app"
+      baseroute="/react18-app"
       iframe
       disable-memory-router></micro-app>
   </div>

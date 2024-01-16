@@ -16,11 +16,11 @@ const routes = [
   { path: '/', component: () => import('../views/Home.vue') },
   {
     // BUG 没有匹配到 /host/product
-    path: '/react-app/:anyPath*',
-    name: 'react-app',
+    path: '/react18-app/:anyPath*',
+    name: 'react18-app',
     component: () => import('../views/HostPage.vue'),
   },
-  { path: '/vue-app', component: () => import('../views/About.vue') },
+  { path: '/vue3-app', component: () => import('../views/About.vue') },
 ]
 
 // 3. 创建路由实例并传递 `routes` 配置

@@ -2,12 +2,36 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-12 17:36:43
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-12 18:01:21
+ * @LastEditTime: 2024-01-16 10:18:25
  * @Description : 
 -->
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRouter } from 'vue-router'
+
 import HelloWorld from './components/HelloWorld.vue'
+
+const router = useRouter()
+
+addDataListener()
+
+function addDataListener() {
+  if (window.__MICRO_APP_NAME__ === 'vue3-app') {
+    // 监听来自主应用的数据变化
+    // NOTE microApp.addDataListener 不生效
+    window.microApp.addDataListener(data => {
+      console.log('vue3-app 收到数据', data)
+      router.push({
+        path: data.__base_app_to_path.replace(window.__MICRO_APP_BASE_ROUTE__, ''),
+      })
+      // 返回值将传递给主应用
+      return {
+        success: true,
+        msg: Math.random(),
+        microAppName: window.__MICRO_APP_NAME__,
+      }
+    })
+  }
+}
 </script>
 
 <template>

@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 22:56:53
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-16 09:43:16
+ * @LastEditTime: 2024-01-16 10:15:09
  * @Description : 
 -->
 <script setup>
@@ -28,9 +28,14 @@ watch(
         __base_app_to_path: newVal,
         __base_app_old_path: oldVal,
       })
+      sendDataTo('vue3-app', {
+        __base_app_to_path: newVal,
+        __base_app_old_path: oldVal,
+      })
     }
   }
 )
+
 function incrementAge() {
   baseAge.value++
   // 向子应用react18-app传递数据
@@ -43,7 +48,15 @@ function incrementAge() {
       console.log('来自子应用react18-app的数据:', dataFromChild)
     }
   )
-  console.log('向子应用react18-app传递数据 baseAge:', baseAge.value)
+  sendDataTo(
+    'vue3-app',
+    {
+      baseAge: baseAge.value,
+    },
+    dataFromChild => {
+      console.log('来自子应用vue-app的数据:', dataFromChild)
+    }
+  )
 }
 </script>
 
@@ -53,9 +66,9 @@ function incrementAge() {
       <!-- 导航栏 -->
       <div class="nav-container">
         <router-link to="/">home</router-link>
-        <router-link to="/react-app">react-app</router-link>
-        <router-link to="/vue-app">vue-app</router-link>
-        <router-link to="/react-app/about">react-app/about</router-link>
+        <router-link to="/react18-app">react18-app</router-link>
+        <router-link to="/vue3-app">vue3-app</router-link>
+        <router-link to="/react18-app/about">react18-app/about</router-link>
       </div>
       <div class="data-container">
         <p>nav in host app</p>
