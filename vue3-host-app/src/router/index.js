@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:23:25
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-15 15:56:44
+ * @LastEditTime: 2024-01-16 09:14:03
  * @Description :
  */
 import { createRouter, createWebHistory } from 'vue-router'
@@ -15,6 +15,7 @@ const About = { template: '<div>About</div>' }
 const routes = [
   { path: '/', component: () => import('../views/Home.vue') },
   {
+    // BUG 没有匹配到 /host/product
     path: '/host/:anyPath*',
     name: 'host',
     component: () => import('../views/HostPage.vue'),
