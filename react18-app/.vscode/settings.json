@@ -1,0 +1,14 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+    // "source.fixAll.eslint": true,
+    // "source.fixAll.stylelint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.linkedEditing": true,
+  "cSpell.words": [],
+  "vue.features.codeActions.enable": false,
+  "vue.codeActions.enabled": false,
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true
+}
