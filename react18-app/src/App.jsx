@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:52:11
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-16 11:07:40
+ * @LastEditTime: 2024-01-16 15:35:37
  * @Description :
  */
 import { Button } from 'antd'
@@ -74,6 +74,10 @@ function App() {
 
   const location = useLocation()
 
+  useEffect(() => {
+    const dataFromBase = window.microApp.getData()
+    console.log('获取基座发送的数据', dataFromBase)
+  }, [])
   // useEffect(() => {
   //   console.log('微应用基础路由', window.__MICRO_APP_BASE_ROUTE__)
   //   if (window.__MICRO_APP_ENVIRONMENT__) {

@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:25:07
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-16 12:15:16
+ * @LastEditTime: 2024-01-16 15:28:19
  * @Description : 
 -->
 <script setup>
@@ -17,6 +17,9 @@ onMounted(onAppDataChange)
 
 function onAppDataChange() {
   console.log('监听子应用的数据变化')
+
+  const childData = microApp.getData('vue3-app')
+  console.log('vue3-app的数据:', childData)
   microApp.addDataListener('vue3-app', dataFromChild => {
     console.log('vue3-app的数据:', dataFromChild)
     if (dataFromChild.toPath && dataFromChild.toPath !== route.fullPath) {
