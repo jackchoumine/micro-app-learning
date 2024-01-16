@@ -2,29 +2,32 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:49:56
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-15 23:09:57
+ * @LastEditTime: 2024-01-16 09:22:08
  * @Description : 
 -->
 <script setup>
 import microApp from '@micro-zoe/micro-app'
-import {  onMounted, watch } from 'vue'
+import { onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { useLocalStorage } from '../hooks'
+
 const [initPath] = useLocalStorage('initPath', location.pathname)
 
 const route = useRoute()
-watch(() => route.fullPath, (newVal, oldVal)=>{
-  console.log('route.fullPath',newVal,oldVal)
-  initPath.value = newVal
-  if(newVal !== oldVal){
-    sendDataTo('react18-app', {
-      __base_app_to_path:newVal,
-      __base_app_old_path:oldVal
-    })
+watch(
+  () => route.fullPath,
+  (newVal, oldVal) => {
+    console.log('route.fullPath', newVal, oldVal)
+    initPath.value = newVal
+    if (newVal !== oldVal) {
+      sendDataTo('react18-app', {
+        __base_app_to_path: newVal,
+        __base_app_old_path: oldVal,
+      })
+    }
   }
-})
-
+)
 
 function sendDataTo(name, data) {
   // 向子应用react18-app传递数据
@@ -36,7 +39,7 @@ function sendDataTo(name, data) {
 // 监听子应用react18-app的数据变化
 onMounted(onAppDataChange)
 
-function onAppDataChange(){
+function onAppDataChange() {
   microApp.addDataListener('react18-app', dataFromChild => {
     console.log('来自子应用react18-app的数据:', dataFromChild)
     initPath.value = dataFromChild.initPath
@@ -52,7 +55,7 @@ function onAppDataChange(){
     <micro-app
       name="react18-app"
       url="http://localhost:3001/"
-      baseroute="/host"
+      baseroute="/react-app"
       iframe
       disable-memory-router></micro-app>
   </div>

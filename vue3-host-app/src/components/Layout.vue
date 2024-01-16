@@ -2,22 +2,28 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 22:56:53
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-15 22:51:21
+ * @LastEditTime: 2024-01-16 09:29:48
  * @Description : 
 -->
 <script setup>
 import microApp from '@micro-zoe/micro-app'
-import { useLocalStorage } from '../hooks';
+
+import { useLocalStorage } from '../hooks'
+
 const [baseCount] = useLocalStorage('baseCount', 0)
 const [baseAge] = useLocalStorage('baseAge')
 function incrementAge() {
   baseAge.value++
   // 向子应用react18-app传递数据
-  microApp.setData('react18-app', {
-    baseAge: baseAge.value
-  }, (dataFromChild) => {
-    console.log('来自子应用react18-app的数据:', dataFromChild)
-  })
+  microApp.setData(
+    'react18-app',
+    {
+      baseAge: baseAge.value,
+    },
+    dataFromChild => {
+      console.log('来自子应用react18-app的数据:', dataFromChild)
+    }
+  )
   console.log('向子应用react18-app传递数据 baseAge:', baseAge.value)
 }
 </script>
@@ -27,10 +33,10 @@ function incrementAge() {
     <nav>
       <!-- 导航栏 -->
       <div class="nav-container">
-        <router-link to="/">Home</router-link>
-        <router-link to="/host">React-App</router-link>
-        <router-link to="/about">About</router-link>
-        <router-link to="/host/about">host/About</router-link>
+        <router-link to="/">home</router-link>
+        <router-link to="/react-app">react-app</router-link>
+        <router-link to="/vue-app">vue-app</router-link>
+        <router-link to="/react-app/about">react-app/about</router-link>
       </div>
       <div class="data-container">
         <p>nav in host app</p>
@@ -70,7 +76,7 @@ function incrementAge() {
   a {
     color: #35495e;
     text-decoration: none;
-    width: 100px;
+    width: 100%;
     margin: 0 10px;
   }
 

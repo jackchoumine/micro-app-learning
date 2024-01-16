@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:23:25
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-16 09:14:03
+ * @LastEditTime: 2024-01-16 09:20:36
  * @Description :
  */
 import { createRouter, createWebHistory } from 'vue-router'
@@ -16,11 +16,11 @@ const routes = [
   { path: '/', component: () => import('../views/Home.vue') },
   {
     // BUG 没有匹配到 /host/product
-    path: '/host/:anyPath*',
-    name: 'host',
+    path: '/react-app/:anyPath*',
+    name: 'react-app',
     component: () => import('../views/HostPage.vue'),
   },
-  { path: '/about', component: () => import('../views/About.vue') },
+  { path: '/vue-app', component: () => import('../views/About.vue') },
 ]
 
 // 3. 创建路由实例并传递 `routes` 配置

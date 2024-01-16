@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:52:11
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-15 22:06:55
+ * @LastEditTime: 2024-01-16 09:24:10
  * @Description :
  */
 import React from 'react'
@@ -18,7 +18,7 @@ import './index.css'
 //   // TODO
 //   // https://micro-zoe.github.io/micro-app/docs.html#/zh-cn/env?id=__micro_app_public_path__
 //   console.log('微应用静态资源', window.__MICRO_APP_PUBLIC_PATH__)
-//   console.log('微应用基础路由', window.__MICRO_APP_BASE_ROUTE__)
+// console.log('微应用基础路由', window.__MICRO_APP_BASE_ROUTE__)
 //   console.log('是主应用吗', window.__MICRO_APP_BASE_APPLICATION__)
 // }
 

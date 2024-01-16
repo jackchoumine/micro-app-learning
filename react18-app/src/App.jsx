@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:52:11
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-15 23:11:17
+ * @LastEditTime: 2024-01-16 09:32:28
  * @Description :
  */
 import { Button } from 'antd'
@@ -42,7 +42,7 @@ function App() {
       setData(data)
       // {__base_app_to_path:'',__base_app_old_path:''}
       // 订阅基座应用路由变化，更新当前应用路由
-      navigate(data.__base_app_to_path.replace('/host', ''))
+      navigate(data.__base_app_to_path.replace(window.__MICRO_APP_BASE_ROUTE__, ''))
       // 返回值将传递给主应用
       return {
         success: true,
@@ -73,15 +73,19 @@ function App() {
   }
 
   const location = useLocation()
+
   useEffect(() => {
-    const fullPath = `/host${location.pathname}`
-    window.microApp.dispatch(
-      {
-        from: 'react18-app',
-        initPath: fullPath,
-      },
-      finishSend
-    )
+    console.log('微应用基础路由', window.__MICRO_APP_BASE_ROUTE__)
+    if (window.__MICRO_APP_ENVIRONMENT__) {
+      const fullPath = `${window.__MICRO_APP_BASE_ROUTE__}${location.pathname}`
+      window.microApp.dispatch(
+        {
+          from: 'react18-app',
+          initPath: fullPath,
+        },
+        finishSend
+      )
+    }
   }, [location.pathname])
 
   return (
