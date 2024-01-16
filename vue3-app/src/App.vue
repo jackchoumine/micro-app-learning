@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-12 17:36:43
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-16 10:18:25
+ * @LastEditTime: 2024-01-16 11:49:16
  * @Description : 
 -->
 <script setup>
@@ -20,8 +20,11 @@ function addDataListener() {
     // NOTE microApp.addDataListener 不生效
     window.microApp.addDataListener(data => {
       console.log('vue3-app 收到数据', data)
+      const path =
+        data.__base_app_to_path.replace(window.__MICRO_APP_BASE_ROUTE__, '') || '/'
+      console.log('vue3-app 跳转', path)
       router.push({
-        path: data.__base_app_to_path.replace(window.__MICRO_APP_BASE_ROUTE__, ''),
+        path,
       })
       // 返回值将传递给主应用
       return {

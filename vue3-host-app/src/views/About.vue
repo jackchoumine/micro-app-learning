@@ -2,13 +2,13 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:25:07
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-16 10:16:45
+ * @LastEditTime: 2024-01-16 11:34:16
  * @Description : 
 -->
 <script setup>
-import { useLocalStorage } from '../hooks'
+// import { useLocalStorage } from '../hooks'
 
-const [initPath] = useLocalStorage('initPath', location.pathname)
+// const [initPath] = useLocalStorage('initPath', location.pathname)
 </script>
 
 <template>

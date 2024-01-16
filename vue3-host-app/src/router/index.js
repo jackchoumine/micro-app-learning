@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:23:25
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-16 09:20:36
+ * @LastEditTime: 2024-01-16 11:53:40
  * @Description :
  */
 import { createRouter, createWebHistory } from 'vue-router'
@@ -20,7 +20,12 @@ const routes = [
     name: 'react18-app',
     component: () => import('../views/HostPage.vue'),
   },
-  { path: '/vue3-app', component: () => import('../views/About.vue') },
+  {
+    // NOTE 不能使用羊肉串命名方式，否则匹配不到
+    path: '/vue3-app/:vue3Path*',
+    name: 'vue3-app',
+    component: () => import('../views/About.vue'),
+  },
 ]
 
 // 3. 创建路由实例并传递 `routes` 配置

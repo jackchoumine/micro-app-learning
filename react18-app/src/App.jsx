@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-11 16:52:11
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-16 09:32:28
+ * @LastEditTime: 2024-01-16 11:07:40
  * @Description :
  */
 import { Button } from 'antd'
@@ -74,19 +74,19 @@ function App() {
 
   const location = useLocation()
 
-  useEffect(() => {
-    console.log('微应用基础路由', window.__MICRO_APP_BASE_ROUTE__)
-    if (window.__MICRO_APP_ENVIRONMENT__) {
-      const fullPath = `${window.__MICRO_APP_BASE_ROUTE__}${location.pathname}`
-      window.microApp.dispatch(
-        {
-          from: 'react18-app',
-          initPath: fullPath,
-        },
-        finishSend
-      )
-    }
-  }, [location.pathname])
+  // useEffect(() => {
+  //   console.log('微应用基础路由', window.__MICRO_APP_BASE_ROUTE__)
+  //   if (window.__MICRO_APP_ENVIRONMENT__) {
+  //     const fullPath = `${window.__MICRO_APP_BASE_ROUTE__}${location.pathname}`
+  //     window.microApp.dispatch(
+  //       {
+  //         from: 'react18-app',
+  //         initPath: fullPath,
+  //       },
+  //       finishSend
+  //     )
+  //   }
+  // }, [location.pathname])
 
   return (
     <div className="react18-app">

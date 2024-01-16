@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:49:56
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-16 10:17:29
+ * @LastEditTime: 2024-01-16 11:29:13
  * @Description : 
 -->
 <script setup>
@@ -14,7 +14,7 @@ import { useLocalStorage } from '../hooks'
 
 const route = useRoute()
 
-const [initPath] = useLocalStorage('initPath', location.pathname)
+// const [initPath] = useLocalStorage('initPath', location.pathname)
 
 // 监听子应用react18-app的数据变化
 onMounted(onAppDataChange)
@@ -22,7 +22,7 @@ onMounted(onAppDataChange)
 function onAppDataChange() {
   microApp.addDataListener('react18-app', dataFromChild => {
     console.log('来自子应用react18-app的数据:', dataFromChild)
-    initPath.value = dataFromChild.initPath
+    // initPath.value = dataFromChild.initPath
     return route.fullPath // 返回值会传递给子应用
   })
 }
