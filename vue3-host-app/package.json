@@ -19,7 +19,7 @@
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@vitejs/plugin-vue": "^4.5.2",
-    "cpy": "^11.0.0",
+    "cpy-cli": "^5.0.0",
     "http-server": "^14.1.1",
     "prettier": "^3.2.2",
     "sass": "^1.69.7",
