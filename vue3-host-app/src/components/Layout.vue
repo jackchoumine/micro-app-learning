@@ -2,20 +2,39 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 22:56:53
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-16 09:29:48
+ * @LastEditTime: 2024-01-16 09:43:16
  * @Description : 
 -->
 <script setup>
-import microApp from '@micro-zoe/micro-app'
+import { watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 import { useLocalStorage } from '../hooks'
+import { sendDataTo } from '../tools'
 
 const [baseCount] = useLocalStorage('baseCount', 0)
 const [baseAge] = useLocalStorage('baseAge')
+
+const route = useRoute()
+const [initPath] = useLocalStorage('initPath', location.pathname)
+
+watch(
+  () => route.fullPath,
+  (newVal, oldVal) => {
+    console.log('route.fullPath', newVal, oldVal)
+    initPath.value = newVal
+    if (newVal !== oldVal) {
+      sendDataTo('react18-app', {
+        __base_app_to_path: newVal,
+        __base_app_old_path: oldVal,
+      })
+    }
+  }
+)
 function incrementAge() {
   baseAge.value++
   // 向子应用react18-app传递数据
-  microApp.setData(
+  sendDataTo(
     'react18-app',
     {
       baseAge: baseAge.value,
