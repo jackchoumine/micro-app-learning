@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-12 17:36:43
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-16 11:49:16
+ * @LastEditTime: 2024-01-23 10:07:33
  * @Description : 
 -->
 <script setup>
@@ -39,7 +39,9 @@ function addDataListener() {
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
+    <h3>静态资源</h3>
+    <img src="@/assets/ma-yun.jpg" alt="马云" width="125" height="125" />
 
     <div class="wrapper">
       <HelloWorld msg="vite vue3 app" />
