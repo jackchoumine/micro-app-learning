@@ -2,13 +2,17 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-12 17:36:43
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-23 10:07:33
+ * @LastEditTime: 2024-01-24 18:20:09
  * @Description : 
 -->
 <script setup>
 import { RouterLink, RouterView, useRouter } from 'vue-router'
 
+import { useTheme } from '@/hooks'
+
 import HelloWorld from './components/HelloWorld.vue'
+
+const { ThemeToggle, themeVal } = useTheme()
 
 const router = useRouter()
 
@@ -44,7 +48,8 @@ function addDataListener() {
     <img src="@/assets/ma-yun.jpg" alt="马云" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="vite vue3 app" />
+      <HelloWorld :msg="themeVal" />
+      <ThemeToggle />
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
