@@ -41,6 +41,10 @@ body.normal {
   --section-gap: 160px;
 }
 
+body.normal #app {
+  --el-color-primary: red;
+}
+
 body.tech {
   --color-bg: var(--es-tech-blue);
   --color-bg-soft: var(--es-tech-blue-soft);
@@ -51,6 +55,11 @@ body.tech {
 
   --color-heading: var(--es-normal-text-light-1);
   --color-text: var(--es-normal-text-light-1);
+}
+
+/* 切换 element-plus 主题 */
+body.tech #app {
+  --el-color-primary: green;
 }
 
 @media (prefers-color-scheme: dark) {
