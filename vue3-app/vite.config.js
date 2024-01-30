@@ -2,9 +2,10 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-12 17:36:43
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-30 11:14:09
+ * @LastEditTime: 2024-01-30 11:40:35
  * @Description :
  */
+import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { URL, fileURLToPath } from 'node:url'
@@ -16,7 +17,7 @@ import { defineConfig } from 'vite'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
+    vue({ template: { transformAssetUrls } }),
     vueJsx(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
@@ -28,6 +29,9 @@ export default defineConfig({
           directives: true,
         }),
       ],
+    }),
+    quasar({
+      autoImportComponentCase: 'combined',
     }),
   ],
   resolve: {

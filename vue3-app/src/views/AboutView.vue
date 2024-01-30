@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-12 17:36:43
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-30 11:00:34
+ * @LastEditTime: 2024-01-30 11:44:35
  * @Description : about 页面
 -->
 <script setup>
@@ -29,11 +29,13 @@ function goToReactApp() {
     <h1>This is an about page</h1>
     <button v-if="is_in_micro_app" @click="goToReactApp">go to react18-app/about</button>
     <el-button type="primary">el 按钮</el-button>
+    <q-btn color="primary" label="Primary" />
   </div>
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/index.scss';
+// FIXME 自定义 elememt-plus 样式不生效
+// @import '@/assets/index.scss';
 @media (min-width: 1024px) {
   .about {
     min-height: 100vh;
