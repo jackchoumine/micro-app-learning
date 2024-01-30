@@ -60,8 +60,8 @@ body.tech {
 
 /* 切换 element-plus 主题 */
 body.tech #app {
-  --el-color-primary: green;
-  --q-primary: green;
+  --el-color-primary: var(--es-tech-blue);
+  --q-primary: var(--es-tech-blue);
 }
 
 @media (prefers-color-scheme: dark) {
