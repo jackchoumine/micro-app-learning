@@ -10,6 +10,7 @@
     "serve": "vite build && http-server dist --port 3002 --cors -o"
   },
   "dependencies": {
+    "element-plus": "^2.5.3",
     "pinia": "^2.1.7",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5"
@@ -20,6 +21,8 @@
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "http-server": "^14.1.1",
     "prettier": "^3.2.2",
+    "unplugin-auto-import": "^0.17.5",
+    "unplugin-vue-components": "^0.26.0",
     "vite": "^5.0.10"
   }
 }

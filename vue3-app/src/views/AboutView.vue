@@ -1,3 +1,10 @@
+<!--
+ * @Author      : ZhouQiJun
+ * @Date        : 2024-01-12 17:36:43
+ * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2024-01-30 10:52:23
+ * @Description : about 页面
+-->
 <script setup>
 const is_in_micro_app = window.__MICRO_APP_ENVIRONMENT__
 
@@ -21,6 +28,7 @@ function goToReactApp() {
   <div class="about">
     <h1>This is an about page</h1>
     <button v-if="is_in_micro_app" @click="goToReactApp">go to react18-app/about</button>
+    <el-button type="primary">el 按钮</el-button>
   </div>
 </template>
 
