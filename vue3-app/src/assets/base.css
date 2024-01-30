@@ -43,6 +43,7 @@ body.normal {
 
 body.normal #app {
   --el-color-primary: red;
+  --q-primary: red;
 }
 
 body.tech {
@@ -60,6 +61,7 @@ body.tech {
 /* 切换 element-plus 主题 */
 body.tech #app {
   --el-color-primary: green;
+  --q-primary: green;
 }
 
 @media (prefers-color-scheme: dark) {
