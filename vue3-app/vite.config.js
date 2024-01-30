@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-12 17:36:43
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-30 10:48:02
+ * @LastEditTime: 2024-01-30 11:14:09
  * @Description :
  */
 import vue from '@vitejs/plugin-vue'
@@ -22,12 +22,26 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [
+        ElementPlusResolver({
+          importStyle: 'sass',
+          directives: true,
+        }),
+      ],
     }),
   ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // TODO 自定义主题，没有生效
+        // https://blog.csdn.net/gsy445566778899/article/details/130843599
+        // additionalData: `@use "@/assets/index.scss" as *;`,
+      },
     },
   },
   server: {

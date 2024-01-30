@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-12 17:36:43
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-30 10:52:23
+ * @LastEditTime: 2024-01-30 11:00:34
  * @Description : about 页面
 -->
 <script setup>
@@ -32,7 +32,8 @@ function goToReactApp() {
   </div>
 </template>
 
-<style>
+<style lang="scss" scoped>
+@import '@/assets/index.scss';
 @media (min-width: 1024px) {
   .about {
     min-height: 100vh;
@@ -44,3 +45,7 @@ function goToReactApp() {
   }
 }
 </style>
+
+<!-- 
+<style lang="scss" scoped>
+</style> -->
