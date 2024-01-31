@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-12 17:36:43
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-30 11:43:36
+ * @LastEditTime: 2024-01-31 17:42:11
  * @Description :
  */
 import { createPinia } from 'pinia'
@@ -21,4 +21,4 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router).use(Quasar, quasarOptions)
 
-app.mount('#app')
+app.mount('#vue3-app')
