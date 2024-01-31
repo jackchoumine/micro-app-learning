@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 23:25:07
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-16 15:28:19
+ * @LastEditTime: 2024-01-31 18:20:25
  * @Description : 
 -->
 <script setup>
@@ -27,6 +27,15 @@ function onAppDataChange() {
     }
   })
 }
+function appMounted(e) {
+  console.log('vue3-app mounted', e.detail)
+  const appBody = e.detail.container.querySelector('micro-app-body')
+  // work as well
+  // const appBody = document
+  //   .querySelector('micro-app[name="vue3-app"]')
+  //   .querySelector('micro-app-body')
+  console.log('vue3-app body', appBody)
+}
 </script>
 
 <template>
@@ -37,6 +46,7 @@ function onAppDataChange() {
       url="http://localhost:3002/"
       baseroute="/vue3-app"
       iframe
+      @mounted="appMounted"
       disable-memory-router></micro-app>
   </div>
 </template>
