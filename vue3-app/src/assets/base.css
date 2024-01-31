@@ -1,4 +1,5 @@
 /* color palette from <https://github.com/vuejs/theme> */
+micro-app[name='vue3-app'],
 :root {
   --es-normal-white: #ffffff;
   --es-normal-white-soft: #f8f8f8;
@@ -27,6 +28,7 @@
 }
 
 /* semantic color variables for this project */
+micro-app-body.normal,
 body.normal {
   --color-bg: var(--es-normal-white);
   --color-bg-soft: var(--es-normal-white-soft);
@@ -41,11 +43,13 @@ body.normal {
   --section-gap: 160px;
 }
 
+micro-app-body.normal #vue3-app,
 body.normal #vue3-app {
   /* --el-color-primary: red; */
   /* --q-primary: red; */
 }
 
+micro-app-body.tech,
 body.tech {
   --color-bg: var(--es-tech-blue);
   --color-bg-soft: var(--es-tech-blue-soft);
@@ -59,6 +63,7 @@ body.tech {
 }
 
 /* 切换 element-plus 主题 */
+micro-app-body.tech #vue3-app,
 body.tech #vue3-app {
   --el-color-primary: var(--es-tech-blue);
   --q-primary: var(--es-tech-blue);
@@ -86,6 +91,7 @@ body.tech #vue3-app {
   font-weight: normal;
 }
 
+micro-app-body,
 body {
   min-height: 100vh;
   color: var(--color-text);

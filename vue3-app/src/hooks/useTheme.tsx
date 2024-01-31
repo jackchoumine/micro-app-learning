@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-24 17:34:14
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-24 18:18:26
+ * @LastEditTime: 2024-01-31 18:26:03
  * @Description :
  */
 import { defineComponent, readonly, ref, watch } from 'vue'
@@ -17,7 +17,16 @@ export function useTheme(
     (val, oldVal) => {
       console.log('val', val, oldVal)
       // oldVal && document.body.classList.remove(oldVal as string)
-      const body = document.body
+      let body = document.body
+      // @ts-ignore
+      if (window.__MICRO_APP_NAME__ === 'vue3-app') {
+        // console.log('vue3-app', document.querySelector('.about-page'))
+        console.log('vue3-app', body.querySelector('#app'))
+        // body = document.querySelector('micro-app')
+        // body = document.querySelector("micro-app[name='vue3-app']")
+        // .querySelector('micro-app-body') as HTMLElement
+      }
+      console.log('body', body)
       const classList = body.classList
       if (classList.contains(oldVal as string)) {
         classList.remove(oldVal as string)
@@ -25,10 +34,10 @@ export function useTheme(
         // classList.remove('tech')
       }
       document.body.classList.add(val)
-    },
-    {
-      immediate: true,
     }
+    // {
+    //   immediate: true,
+    // }
   )
 
   const ThemeToggle = defineComponent((props, { emit }) => {
