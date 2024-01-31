@@ -41,9 +41,9 @@ body.normal {
   --section-gap: 160px;
 }
 
-body.normal #app {
-  --el-color-primary: red;
-  --q-primary: red;
+body.normal #vue3-app {
+  /* --el-color-primary: red; */
+  /* --q-primary: red; */
 }
 
 body.tech {
@@ -59,7 +59,7 @@ body.tech {
 }
 
 /* 切换 element-plus 主题 */
-body.tech #app {
+body.tech #vue3-app {
   --el-color-primary: var(--es-tech-blue);
   --q-primary: var(--es-tech-blue);
 }
