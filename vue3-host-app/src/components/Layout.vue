@@ -2,14 +2,14 @@
  * @Author      : ZhouQiJun
  * @Date        : 2024-01-13 22:56:53
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2024-01-16 11:42:45
+ * @LastEditTime: 2024-02-02 00:40:24
  * @Description : 
 -->
 <script setup>
+import { useLocalStorage } from 'petit-vue-hooks'
 import { watch } from 'vue'
 import { useRoute } from 'vue-router'
 
-import { useLocalStorage } from '../hooks'
 import { sendDataTo } from '../tools'
 
 const [baseCount] = useLocalStorage('baseCount', 0)
